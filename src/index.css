@@ -1,4 +1,16 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize;
+/* bring in normalize.css styles */
+
+:root {
+  --bg-clr: #023449;
+  --btn-bg-clr: #31c6eb8a;
+  --btn-bg-active-clr: #31c6ebde;
+  --txt-clr: #c5a16e;
+  --input-txt-clr: #f0c588;
+  --input-bg-clr: #00000025;
+  --input-focus-bg-clr: #ffffff11;
+  --transition-default: all .2s ease-out;
+}
 
 body {
   margin: 0;
@@ -7,9 +19,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--bg-clr);
+  color: var(--txt-clr);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input {
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
 }
