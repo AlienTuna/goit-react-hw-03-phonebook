@@ -12,11 +12,22 @@ export class App extends React.Component {
     contacts: [],
     filter: '',
   }
-
+  checkContactByName = cName => {
+    const array = this.state.contacts
+    const result = array.find(({name}) => cName.toLowerCase() === name.toLowerCase())
+    if (result) {
+      alert(`${cName} is already in contacts`)
+      return true
+    }
+    return false
+  }
   addContact = (name, number) => {
+    if(this.checkContactByName(name)) {
+      return
+    }
     const id = nanoid(3);
     this.setState(prevState => ({
-      contacts: ([...prevState.contacts, { id, name, number }])
+      contacts: ([...prevState.contacts, { id, name: name, number: number }])
     }))
   }
 
