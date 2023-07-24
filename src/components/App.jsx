@@ -12,6 +12,23 @@ export class App extends React.Component {
     contacts: [],
     filter: '',
   }
+
+  componentDidMount() {
+    const storedContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (storedContacts && storedContacts.length > 0) {
+      this.setState({contacts: storedContacts})
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const updatedContacts = this.state.contacts;
+
+    if (updatedContacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(updatedContacts))
+    }
+
+  }
+
   checkContactByName = cName => {
     const array = this.state.contacts
     const result = array.find(({name}) => cName.toLowerCase() === name.toLowerCase())
